@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/profile.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/home.css"/>
+    <link rel="stylesheet" href="/icons/css/all.min.css"/>
+    <link rel="stylesheet" href="/icons/css/fontawesome.min.css"/>
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="/images/logo.png"/>
+        </a>
+    </div>
+
+    <nav>
+        <button class="btn" id="glLink" onclick="toGallery()">Gallery</button>
+        <a href="/" class="btn" id="home-link">Home</a>
+    </nav>
+</header>
+
+<main>
+    <form class="profile-container" onsubmit="updateUser(event)">
+        <div class="accra">
+            <img src="" id="profile_preview"/>
+            <label for="profile-pic">Click to choose a photo</label>
+            <input type="file" id="profile-pic" accept="image/*" onchange="handleChange(event)"/>
+        </div>
+        <div class="dakar">
+            <input type="text" name="uname" id="uname" placeholder="Username">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="password" name="password" id="password" placeholder="New password">
+            <input type="submit" value="Update">
+        </div>
+    </form>
+</main>
+
+<footer>
+    <p>
+        &copy;
+        <span id="year"></span>
+        <a href="https://jamesmumo.vercel.app/" target="_blank">JayTech</a> | All Rights Reserved.
+    </p>
+</footer>
+
+<script src="/js/profile.js"></script>
+<script src="https://kit.fontawesome.com/a50253de37.js" crossorigin="anonymous"></script>
+</body>
+</html>

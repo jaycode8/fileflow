@@ -1,0 +1,84 @@
+.profile-container {
+    width: 60rem;
+    height: 25rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 3px #6eacc9aa;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+.profile-container div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.accra {
+    border-radius: 0.5rem;
+    background: grey;
+    overflow: hidden;
+}
+
+.accra input[type="file"] {
+    display: none;
+}
+
+.accra label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #6eacc9aa;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.accra img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dakar {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dakar input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid #6eacc9;
+}
+
+.dakar input[type="submit"] {
+    border: none;
+    text-transform: uppercase;
+    margin-top: 3rem;
+    background: #6eacc9;
+    padding: 0.7rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 600px) {
+    .profile-container {
+        width: 100%;
+        height: 100%;
+        grid-template-columns: unset;
+    }
+
+}

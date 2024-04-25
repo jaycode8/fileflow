@@ -1,0 +1,46 @@
+:root {
+    --ivory: #fffff0;
+    --parchment: #fcf5e5;
+    --pearl: #e2dfd2;
+    --mint-cream: #f5fffa;
+    --sea-shell: #fff5ee;
+    --bone-white: #f9f6ee;
+}
+
+@font-face {
+    font-family: LexendDeca;
+    src: url("../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Big Shoulders;
+    src: url("../fonts/Big_Shoulders_Display/BigShouldersDisplay-VariableFont_wght.ttf");
+}
+
+* {
+    box-sizing: border-box;
+    font-family: LexendDeca, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main, .gallery-main {
+    height: 100%;
+    min-height: calc(100svh - 70px - 50px);
+    padding: 2rem 12%;
+}
+
+footer {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    background: #6EACC9;
+    justify-content: center;
+}
+
+footer a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+}
+

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <title>FileFlow - Home</title>
+    <link href="./css/index.css" rel="stylesheet"/>
+    <link href="./css/home.css" rel="stylesheet"/>
+    <link href="icons/css/all.min.css" rel="stylesheet">
+    <link href="icons/css/fontawesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="images/logo.png"/>
+        </a>
+    </div>
+
+    <nav>
+        <button class="btn" id="upload_btn" onclick="toggleUploadModal()">Upload file</button>
+        <button class="btn" id="glLink">Gallery</button>
+        <div class="vertical-line"></div>
+        <div class="profile">
+            <div class="profile-image">
+                <img alt="avatar" id="avatar_img" src="images/avatar.jpeg"/>
+            </div>
+
+            <div class="profile-dropdown">
+                <p class="profile-dropdown-btn" onclick="userProfile()">Profile</p>
+                <p class="profile-dropdown-btn" onclick="logOut()">Log Out</p>
+                <a class="profile-dropdown-btn bamako" href="/forms" onclick="">Log In</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="image-container">
+        <img alt="folder" class="folder-anim" src="./images/folder1.gif"/>
+    </div>
+
+    <div class="details">
+        <h1>FileFlow</h1>
+        <h2>Effortless file sharing</h2>
+        <p>
+            Easily upload, share and collaborate on files with this intuitive
+            platform.
+            <em>Streamlined for simplicity, powerful for productivity.</em>
+        </p>
+    </div>
+
+    <div class="upload-modal">
+        <button id="close-btn" onclick="toggleUploadModal()">
+            <i class="fa fa-times"></i>
+        </button>
+        <div class="action-btns">
+            <button class="active" onclick="toggleButtons(this)">images</button>
+            <button onclick="toggleButtons(this)">videos</button>
+            <button onclick="toggleButtons(this)">documents</button>
+        </div>
+        <form class="flex" onsubmit="fileUpload(event)">
+            <div class="image-container">
+                <img alt="" id="photo" src=""/>
+                <label for="images" id="choose_label"
+                >Click here to choose an image file</label
+                >
+            </div>
+            <input accept="image/*" id="images" name="myFile" onchange="handleFileChange(event)" type="file"/>
+            <p class="image-file-name"></p>
+            <input type="submit" value="upload"/>
+        </form>
+
+        <form class="flex inactive" onsubmit="fileUpload(event)">
+            <div class="image-container">
+                <video autoplay controls id="videoPlayer"></video>
+                <label for="video" id="video_label"
+                >Click here to choose a video file</label
+                >
+            </div>
+            <input
+                    accept="video/*"
+                    id="video"
+                    name="myFile"
+                    onchange="handleVideoChange(event)"
+                    type="file"
+            />
+            <p class="video-file-name"></p>
+            <input type="submit" value="upload"/>
+        </form>
+
+        <form class="flex inactive" onsubmit="fileUpload(event)">
+            <div class="image-container">
+                <label for="documents" id="doc_label">Click here to choose a document file</label
+                >
+            </div>
+            <input accept=".pdf,.doc,.docx,.txt,.py" id="documents" name="myFile" onchange="handleDocumentChange(event)"
+                   type="file"/>
+            <p class="doc-file-name"></p>
+            <input type="submit" value="upload"/>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>
+        &copy;
+        <span id="year"></span>
+        <a href="https://jamesmumo.vercel.app/" target="_blank"> JayTech </a>|
+        All Rights Reserved.
+    </p>
+</footer>
+
+<script src="js/index.js"></script>
+<script src="js/uploads.js"></script>
+</body>
+</html>

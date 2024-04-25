@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/gallery.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/home.css"/>
+    <link rel="stylesheet" href="/icons/css/all.min.css"/>
+    <link rel="stylesheet" href="/icons/css/fontawesome.min.css"/>
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="/images/logo.png"/>
+        </a>
+    </div>
+
+    <nav>
+        <button class="btn" id="upload_btn" onclick="toggleUploadModal()">Upload file</button>
+        <a href="/" class="btn" id="home-link">Home</a>
+        <div class="vertical-line"></div>
+        <div class="profile">
+            <div class="profile-image">
+                <img alt="avatar" src="<%= user_profile %>" id="avatar_img2"/>
+            </div>
+
+            <div class="profile-dropdown">
+                <p class="profile-dropdown-btn" onclick="toProfile()">Profile</p>
+                <p class="profile-dropdown-btn" onclick="logOutfxn()">Log Out</p>
+                <a href="/forms" class="profile-dropdown-btn bamako" onclick="">Log In</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="gallery-main">
+    <div class="gallery-header">
+        <h1 class="heading"><%= heading %></h1>
+        <ul>
+            <li>
+                <button onclick="tranfxn(this)" class="glbtns active-btn">all</button>
+            </li>
+            <li>
+                <button onclick="tranfxn(this)" class="glbtns">images</button>
+            </li>
+            <li>
+                <button onclick="tranfxn(this)" class="glbtns">videos</button>
+            </li>
+            <li>
+                <button onclick="tranfxn(this)" class="glbtns">documents</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="gallery">
+        <% fileData.map((file)=> { %>
+            <div class="photos">
+                <% if(file.mimetype.split('/')[0] === 'image') { %>
+                    <img src="<%= file.file_url %>" alt="<%= file.file_name %>"/>
+                    <button class="btn-trash" onclick="handleDelete('<%= file._id %>')">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    <a href="<%= file.file_url %>" download="<%= file.file_name %>"
+                       class="download-link">
+                        <i class="fa fa-download"></i>
+                    </a>
+                <% } else if(file.mimetype.split('/')[0] === 'video'){ %>
+                    <button onclick="handleDelete('<%= file._id %>')" class="vid-delete">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    <video controls>
+                        <source src="<%= file.file_url %>"/>
+                    </video>
+                <% } %>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="gallery g-images hidden">
+        <% images.map((file)=> { %>
+            <div class="photos">
+                <img src="<%= file.file_url %>" alt="<%= file.file_name %>"/>
+                <button class="btn-trash" onclick="handleDelete('<%= file._id %>')">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <a href="<%= file.file_url %>" download="<%= file.file_name %>" class="download-link">
+                    <i class="fa fa-download"></i>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="gallery hidden g-videos">
+        <% videos.map((file)=> { %>
+            <div class="photos">
+                <button onclick="handleDelete('<%= file._id %>')" class="vid-delete">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <video controls>
+                    <source src="<%= file.file_url %>"/>
+                </video>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="gallery hidden g-documents">
+        <% documents.map((file)=> { %>
+            <div class="photos doc-card">
+                <%
+                    let fname = file.file_name;
+                    let iconClass = 'fa-regular fa-file-lines';
+                    if (fname.endsWith(".py")) {
+                        iconClass = 'fa-brands fa-python';
+                    } else if (fname.endsWith(".docx")) {
+                        iconClass = 'fa-regular fa-file-word';
+                    } else if (fname.endsWith(".pdf")) {
+                        iconClass = 'fa-regular fa-file-pdf';
+                    } else if (fname.endsWith(".js")) {
+                        iconClass = 'fa-brands fa-js';
+                    } else if (fname.endsWith(".html") || (fname.endsWith(".htm"))) {
+                        iconClass = 'fa-brands fa-html5';
+                    } else if (fname.endsWith(".css")) {
+                        iconClass = 'fa-brands fa-css3-alt';
+                    } else if (fname.endsWith(".jsx")) {
+                        iconClass = 'fa-brands fa-square-js';
+                    } else if (fname.endsWith(".java")) {
+                        iconClass = 'fa-brands fa-java';
+                    } else if (fname.endsWith(".csv")) {
+                        iconClass = 'fa-solid fa-file-csv';
+                    } else if (fname.endsWith(".zip")) {
+                        iconClass = 'fa-regular fa-file-zipper';
+                    }
+                %>
+                <i class="<%= iconClass %>"></i>
+                <p><%= fname %></p>
+                <div class="niger">
+                    <a href="/uploads/<%= file.file_url %>" download="<%= fname %>"
+                       class="download-file-link">
+                        <i class="fa fa-download"></i>
+                    </a>
+                    <button onclick="handleDelete('<%= file._id %>')">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<div class="upload-modal">
+    <button id="close-btn" onclick="toggleUploadModal()">
+        <i class="fa fa-times"></i>
+    </button>
+    <div class="action-btns">
+        <button class="active" onclick="toggleButtons(this)">images</button>
+        <button onclick="toggleButtons(this)">videos</button>
+        <button onclick="toggleButtons(this)">documents</button>
+    </div>
+    <form class="flex" onsubmit="fileUpload(event)">
+        <div class="image-container">
+            <img alt="" id="photo" src=""/>
+            <label for="images" id="choose_label"
+            >Click here to choose an image file</label
+            >
+        </div>
+        <input accept="image/*" id="images" name="myFile" type="file" onchange="handleFileChange(event)"/>
+        <p class="image-file-name"></p>
+        <input type="submit" value="upload"/>
+    </form>
+
+    <form class="flex inactive" onsubmit="fileUpload(event)">
+        <div class="image-container">
+            <video autoplay controls id="videoPlayer"></video>
+            <label for="video" id="video_label"
+            >Click here to choose a video file</label
+            >
+        </div>
+        <input
+                accept="video/*"
+                id="video"
+                name="myFile"
+                onchange="handleVideoChange(event)"
+                type="file"
+        />
+        <p class="video-file-name"></p>
+        <input type="submit" value="upload"/>
+    </form>
+
+    <form class="flex inactive" onsubmit="fileUpload(event)">
+        <div class="image-container">
+            <!--          <img alt="" id="photo" src=""/>-->
+            <label for="documents" id="doc_label">Click here to choose a document file</label
+            >
+        </div>
+        <input accept=".pdf,.doc,.docx,.txt,.py,.js,.dart,.html,.htm,.css,.jsx,.java,.csv,.pptx,.zip" id="documents"
+               name="myFile"
+               onchange="handleDocumentChange(event)"
+               type="file"/>
+        <p class="doc-file-name"></p>
+        <input type="submit" value="upload"/>
+    </form>
+</div>
+
+<footer>
+    <p>
+        &copy;
+        <span id="year"></span>
+        <a href="https://jamesmumo.vercel.app/" target="_blank">JayTech</a> | All Rights Reserved.
+    </p>
+</footer>
+
+<script src="/js/index.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/uploads.js"></script>
+<script src="https://kit.fontawesome.com/a50253de37.js" crossorigin="anonymous"></script>
+</body>
+</html>
