@@ -32,13 +32,13 @@ To run **file flow** locally, run this command on your git bash:
 Linux and macOS:
 
  ```bash 
- sudo git clone https://github.com/jaycode8/file_shairing.git
+ sudo git clone https://github.com/jaycode8/fileflow.git
  ``` 
 
 Windows:
 
  ```bash 
- git clone https://github.com/jaycode8/file_shairing.git
+ git clone https://github.com/jaycode8/fileflow.git
  ```
 
 Open a terminal window or cmd to the root directory of the project and run
