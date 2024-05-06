@@ -136,6 +136,7 @@ nav .btn {
     border-radius: 0.3rem;
     box-shadow: 0 0 2px #334d50;
 }
+
 .doc-card p {
     width: 75%;
     overflow: hidden;
@@ -155,6 +156,7 @@ nav .btn {
     border: 0;
     cursor: pointer;
 }
+
 .btn-trash,
 .vid-delete {
     background: rgb(218, 23, 23);
@@ -164,6 +166,37 @@ nav .btn {
     margin-left: 0.5rem;
     background: transparent;
     color: rgb(218, 23, 23);
+}
+
+.file_size, .file_doc_size, .file_vid_size {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: .3rem 1rem;
+    border-bottom-left-radius: .7rem;
+}
+
+.file_doc_size {
+    top: -2rem;
+    right: unset;
+    border-top-right-radius: .7rem;
+    /*display: none;*/
+    transform: scale(0);
+    transition: all 1s ease;
+}
+
+.file_vid_size {
+    z-index: 1;
+    right: unset;
+    left: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: .7rem;
+}
+
+.doc-card:hover .file_doc_size {
+    transform: scale(1);
 }
 
 .btn-trash {
@@ -192,6 +225,7 @@ nav .btn {
     .gallery .doc-card {
         height: 2.5rem;
     }
+
     .doc-card p {
         width: 80%;
     }

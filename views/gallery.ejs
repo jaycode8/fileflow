@@ -62,15 +62,25 @@
         <% fileData.map((file)=> { %>
             <div class="photos">
                 <% if(file.mimetype.split('/')[0] === 'image') { %>
+                    <span class="file_size">
+                        <%= file.file_size %>
+                    </span>
                     <img src="<%= file.file_url %>" alt="<%= file.file_name %>"/>
                     <button class="btn-trash" onclick="handleDelete('<%= file._id %>')">
                         <i class="fa fa-trash"></i>
                     </button>
-                    <a href="<%= file.file_url %>" download="<%= file.file_name %>"
+                    <a href="https://res.cloudinary.com/doyu5zfek/image/upload/v1714078302/fileflow/files/fl_attachment/nqgndf6uhvu9egdk8csw.jpg"
                        class="download-link">
                         <i class="fa fa-download"></i>
                     </a>
+                    <!-- <a href="<%= file.file_url %>" download="<%= file.file_name %>"
+                       class="download-link">
+                        <i class="fa fa-download"></i>
+                    </a> -->
                 <% } else if(file.mimetype.split('/')[0] === 'video'){ %>
+                    <span class="file_vid_size">
+                        <%= file.file_size %>
+                    </span>
                     <button onclick="handleDelete('<%= file._id %>')" class="vid-delete">
                         <i class="fa fa-trash"></i>
                     </button>
@@ -85,6 +95,9 @@
     <div class="gallery g-images hidden">
         <% images.map((file)=> { %>
             <div class="photos">
+                <span class="file_size">
+                    <%= file.file_size %>
+                </span>
                 <img src="<%= file.file_url %>" alt="<%= file.file_name %>"/>
                 <button class="btn-trash" onclick="handleDelete('<%= file._id %>')">
                     <i class="fa fa-trash"></i>
@@ -99,6 +112,9 @@
     <div class="gallery hidden g-videos">
         <% videos.map((file)=> { %>
             <div class="photos">
+                <span class="file_vid_size">
+                    <%= file.file_size %>
+                </span>
                 <button onclick="handleDelete('<%= file._id %>')" class="vid-delete">
                     <i class="fa fa-trash"></i>
                 </button>
@@ -137,6 +153,9 @@
                         iconClass = 'fa-regular fa-file-zipper';
                     }
                 %>
+                <span class="file_doc_size">
+                    <%= file.file_size %>
+                </span>
                 <i class="<%= iconClass %>"></i>
                 <p><%= fname %></p>
                 <div class="niger">
