@@ -1,16 +1,16 @@
 <div align="center">
    <h1>FILE FLOW</h1>
    <p>A node express js resource shairing web app.</p>
-   <a href="https://fileshairing.onrender.com/"><strong>➥ LiveDemo</strong></a>
+   <a href="https://fileflow017.vercel.app/"><strong>➥ LiveDemo</strong></a>
 </div>
 
 #### Demo Screenshot
 
-<img src="https://github.com/jaycode8/file_shairing/blob/main/public/cover/file_shairing.png" />
+<img src="https://res.cloudinary.com/doyu5zfek/image/upload/v1714984219/Projects/e2fxaaypeqi0br87v0fi.png" />
 
 <div align="center">
-   <img src="https://img.badgesize.io/https://github.com/jaycode8/file_shairing.git" style="plastic"  />
-   <img src="https://img.shields.io/github/stars/jaycode8/file_shairing?style=social" />
+   <img src="https://img.badgesize.io/https://github.com/jaycode8/fileflow.git" style="plastic"  />
+   <img src="https://img.shields.io/github/stars/jaycode8/fileflow?style=social" />
 </div>
 
 #### Prerequisites
